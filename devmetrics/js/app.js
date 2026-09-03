@@ -192,5 +192,5 @@ tabs.forEach(tab => {
 
 // Initial Load
 document.addEventListener('DOMContentLoaded', () => {
-    renderDashboard('FirstOnDie');
+    renderDashboard('FrodyGr');
 });
