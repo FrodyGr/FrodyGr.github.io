@@ -11,16 +11,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabBtns = document.querySelectorAll('.lab-tab-btn');
   const panes = document.querySelectorAll('.lab-pane');
 
+  function activateTab(targetId) {
+    tabBtns.forEach(b => {
+      if (b.getAttribute('data-target') === targetId) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
+    panes.forEach(p => {
+      if (p.id === targetId) {
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
+  }
+
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-target');
-      tabBtns.forEach(b => b.classList.remove('active'));
-      panes.forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      const targetPane = document.getElementById(targetId);
-      if (targetPane) targetPane.classList.add('active');
+      activateTab(targetId);
+      if (history.pushState) {
+        history.pushState(null, null, `#${targetId}`);
+      } else {
+        location.hash = targetId;
+      }
     });
   });
+
+  // Handle direct hash navigation from URL
+  if (window.location.hash) {
+    const hash = window.location.hash.substring(1);
+    const validPane = document.getElementById(hash);
+    if (validPane) {
+      activateTab(hash);
+    }
+  }
 
   // ==========================================
   // 1. AGENTGUARD INTERACTIVE LOGIC
