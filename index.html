@@ -288,7 +288,10 @@
                 <!-- Pestañas de Filtrado Dinámico -->
                 <div class="projects-tabs">
                     <button class="tab-btn active" data-filter="all">
-                        <i class="fas fa-border-all"></i> Todos (<span id="countAll">18</span>)
+                        <i class="fas fa-border-all"></i> Todos (<span id="countAll">21</span>)
+                    </button>
+                    <button class="tab-btn" data-filter="books">
+                        <i class="fas fa-book"></i> Libros (3)
                     </button>
                     <button class="tab-btn" data-filter="clients">
                         <i class="fas fa-globe"></i> Webs & Clientes (3)
@@ -303,6 +306,77 @@
 
                 <!-- Cuadrícula de Proyectos -->
                 <div class="projects-grid" id="projectsGrid">
+
+                    <!-- ==================== LIBROS PUBLICADOS (AMAZON) ==================== -->
+
+                    <!-- Java POP: Programación Orientada a Principiantes -->
+                    <div class="project-card" data-category="books">
+                        <div class="project-thumbnail">
+                            <img src="assets/images/libro-java-pop.jpg" alt="Libro Java POP: Programación Orientada a Principiantes" class="contain-fit">
+                            <span class="badge-tag badge-book"><i class="fab fa-amazon"></i> Best Seller</span>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header-meta">
+                                <span class="project-category-label">Libro Técnico / Amazon</span>
+                            </div>
+                            <h4>Java POP: Programación Orientada a Principiantes</h4>
+                            <p>Guía exhaustiva y accesible para dominar la programación orientada a objetos desde cero. Fundamentos de sintaxis moderna, diseño de clases, encapsulamiento, colecciones y buenas prácticas en Java.</p>
+                            <div class="tech-pills">
+                                <span>Java Moderno</span><span>POO</span><span>Fundamentos</span><span>Buenas Prácticas</span><span>Amazon</span>
+                            </div>
+                            <div class="project-links-bar">
+                                <a href="https://www.amazon.es/Java-POP-Programaci%C3%B3n-Orientada-Principiantes/dp/B0H7RM4TQB" target="_blank" rel="noopener" class="link-btn amazon">
+                                    <i class="fab fa-amazon"></i> Ver en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Java POA: Programación Orientada a Avanzados -->
+                    <div class="project-card" data-category="books">
+                        <div class="project-thumbnail">
+                            <img src="assets/images/libro-java-poa.jpg" alt="Libro Java POA: Programación Orientada a Avanzados" class="contain-fit">
+                            <span class="badge-tag badge-book"><i class="fab fa-amazon"></i> Nivel Avanzado</span>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header-meta">
+                                <span class="project-category-label">Libro Técnico / Amazon</span>
+                            </div>
+                            <h4>Java P.O.A.: Programación Orientada a Avanzados</h4>
+                            <p>Inmersión en concurrencia moderna, arquitectura interna de la JVM, Project Loom (Virtual Threads), optimización de memoria/GC y patrones arquitectónicos para microservicios de alto rendimiento.</p>
+                            <div class="tech-pills">
+                                <span>Concurrencia</span><span>JVM Internals</span><span>Virtual Threads</span><span>Microservicios</span><span>Amazon</span>
+                            </div>
+                            <div class="project-links-bar">
+                                <a href="https://www.amazon.es/gp/product/B0H8D56PM1" target="_blank" rel="noopener" class="link-btn amazon">
+                                    <i class="fab fa-amazon"></i> Ver en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Java POE: Programación Orientada a Expertos -->
+                    <div class="project-card" data-category="books">
+                        <div class="project-thumbnail">
+                            <img src="assets/images/libro-java-poe.jpg" alt="Libro Java POE: Programación Orientada a Expertos" class="contain-fit">
+                            <span class="badge-tag badge-book"><i class="fab fa-amazon"></i> Nivel Experto</span>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header-meta">
+                                <span class="project-category-label">Libro Técnico / Amazon</span>
+                            </div>
+                            <h4>Java POE: Programación Orientada a Expertos</h4>
+                            <p>Diseño de sistemas distribuidos a hiperescala, arquitecturas low-latency, criptografía aplicada, resiliencia empresarial, cloud native y seguridad crítica en producción.</p>
+                            <div class="tech-pills">
+                                <span>Sistemas Distribuidos</span><span>Low Latency</span><span>Criptografía</span><span>Cloud Native</span><span>Amazon</span>
+                            </div>
+                            <div class="project-links-bar">
+                                <a href="https://www.amazon.es/gp/product/B0H8JSP11F" target="_blank" rel="noopener" class="link-btn amazon">
+                                    <i class="fab fa-amazon"></i> Ver en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- ==================== WEBS DE CLIENTES ==================== -->
 
@@ -913,6 +987,9 @@
                         </p>
                         <p>
                             Además de mi faceta como desarrollador de software y librerías open source, soy <strong>Perito Informático Forense Colegiado (nº 03624)</strong>, aplicando metodologías forenses y normativa ISO 27037 para la validez probatoria de evidencias digitales.
+                        </p>
+                        <p>
+                            También soy autor de la <strong>Trilogía de Libros Java en Amazon</strong> (<em>Java POP</em>, <em>Java POA</em> y <em>Java POE</em>), donde sintetizo años de experiencia en desarrollo software: desde la programación orientada a objetos moderna hasta la arquitectura interna de la JVM, concurrencia avanzada con Project Loom y sistemas distribuidos en la nube.
                         </p>
 
                         <div class="education-list">

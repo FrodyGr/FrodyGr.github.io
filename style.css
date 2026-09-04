@@ -830,6 +830,11 @@ img {
     color: #ffffff;
 }
 
+.badge-book {
+    background: rgba(245, 158, 11, 0.9);
+    color: #ffffff;
+}
+
 .project-details {
     padding: 24px;
     display: flex;
@@ -923,6 +928,18 @@ img {
 .link-btn.primary:hover {
     background: var(--accent-sky);
     color: #0f172a;
+}
+
+.link-btn.amazon {
+    background: rgba(245, 158, 11, 0.14);
+    border-color: rgba(245, 158, 11, 0.35);
+    color: #fbbf24;
+}
+
+.link-btn.amazon:hover {
+    background: #f59e0b;
+    color: #0f172a;
+    border-color: #f59e0b;
 }
 
 /* ========== TRAYECTORIA / EXPERIENCIA ========== */
