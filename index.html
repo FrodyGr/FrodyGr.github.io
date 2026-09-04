@@ -172,8 +172,8 @@
                                 <i class="fas fa-cube"></i>
                             </div>
                             <div>
-                                <div class="stat-number">4 Libs</div>
-                                <div class="stat-label">En Maven Central</div>
+                                <div class="stat-number">7 Libs</div>
+                                <div class="stat-label">Open Source Java</div>
                             </div>
                         </div>
                         <div class="stat-card">
@@ -281,13 +281,13 @@
                 <!-- Pestañas de Filtrado Dinámico -->
                 <div class="projects-tabs">
                     <button class="tab-btn active" data-filter="all">
-                        <i class="fas fa-border-all"></i> Todos (<span id="countAll">15</span>)
+                        <i class="fas fa-border-all"></i> Todos (<span id="countAll">18</span>)
                     </button>
                     <button class="tab-btn" data-filter="clients">
                         <i class="fas fa-globe"></i> Webs & Clientes (3)
                     </button>
                     <button class="tab-btn" data-filter="opensource">
-                        <i class="fas fa-code-branch"></i> Open Source & Java (4)
+                        <i class="fas fa-code-branch"></i> Open Source & Java (7)
                     </button>
                     <button class="tab-btn" data-filter="apps">
                         <i class="fas fa-brain"></i> IA & Aplicaciones (8)
@@ -481,6 +481,84 @@
                                 </a>
                                 <a href="https://central.sonatype.com/artifact/io.github.frodygr/authforge" target="_blank" rel="noopener" class="link-btn">
                                     <i class="fas fa-box-open"></i> Maven Central
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AgentGuard -->
+                    <div class="project-card" data-category="opensource">
+                        <div class="project-thumbnail">
+                            <img src="assets/images/agentguard.jpg" alt="AgentGuard — Enterprise AI Security & PII Masking">
+                            <span class="badge-tag badge-opensource">Open Source</span>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header-meta">
+                                <span class="project-category-label">IA / Seguridad / Spring AI</span>
+                            </div>
+                            <h4>AgentGuard</h4>
+                            <p>Firewall y suite de seguridad para aplicaciones de Inteligencia Artificial en Java (Spring AI, LangChain4j). Enmascaramiento reversible de PII con validación Luhn, firewall contra prompt injections, control de cuotas de tokens y aspecto declarativo <code>@SecurePrompt</code>.</p>
+                            <div class="tech-pills">
+                                <span>Java 21</span><span>Spring Boot 3</span><span>LangChain4j / Spring AI</span><span>PII Masking</span><span>Luhn Check</span><span>Apache 2.0</span>
+                            </div>
+                            <div class="project-links-bar">
+                                <a href="https://github.com/FrodyGr/AgentGuard" target="_blank" rel="noopener" class="link-btn primary">
+                                    <i class="fab fa-github"></i> Repositorio
+                                </a>
+                                <a href="https://github.com/FrodyGr/AgentGuard/wiki" target="_blank" rel="noopener" class="link-btn">
+                                    <i class="fas fa-book-open"></i> Wiki
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EvidenceChain -->
+                    <div class="project-card" data-category="opensource">
+                        <div class="project-thumbnail">
+                            <img src="assets/images/evidencechain.jpg" alt="EvidenceChain — Cryptographic Audit Trail & Forensic Ledger">
+                            <span class="badge-tag badge-opensource">Open Source</span>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header-meta">
+                                <span class="project-category-label">Forense Digital / Criptografía</span>
+                            </div>
+                            <h4>EvidenceChain</h4>
+                            <p>Libro mayor criptográfico inmutable con árboles de Merkle y SHA-256 para trazabilidad probatoria de eventos. Diseñado bajo metodología pericial judicial (Colegiado nº 03624), verificación de inclusión O(log N), exportación de dictámenes y aspecto <code>@AuditedEvidence</code>.</p>
+                            <div class="tech-pills">
+                                <span>Java 21</span><span>Merkle Trees</span><span>SHA-256</span><span>Peritaje Forense</span><span>Spring Boot</span><span>Apache 2.0</span>
+                            </div>
+                            <div class="project-links-bar">
+                                <a href="https://github.com/FrodyGr/EvidenceChain" target="_blank" rel="noopener" class="link-btn primary">
+                                    <i class="fab fa-github"></i> Repositorio
+                                </a>
+                                <a href="https://github.com/FrodyGr/EvidenceChain/wiki" target="_blank" rel="noopener" class="link-btn">
+                                    <i class="fas fa-book-open"></i> Wiki
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LoomDoctor -->
+                    <div class="project-card" data-category="opensource">
+                        <div class="project-thumbnail">
+                            <img src="assets/images/loomdoctor.jpg" alt="LoomDoctor — Virtual Thread Diagnostics & Telemetry">
+                            <span class="badge-tag badge-opensource">Open Source</span>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header-meta">
+                                <span class="project-category-label">Java 21+ / Virtual Threads</span>
+                            </div>
+                            <h4>LoomDoctor</h4>
+                            <p>Herramienta de telemetría y diagnóstico en tiempo real para Virtual Threads en Java 21+ (Project Loom). Detección de carrier thread pinning en bloques sincronizados, monitor de saturación de connection pools y endpoint nativo Spring Boot Actuator.</p>
+                            <div class="tech-pills">
+                                <span>Java 21</span><span>Project Loom</span><span>Virtual Threads</span><span>Spring Boot Actuator</span><span>Starvation Monitor</span><span>Apache 2.0</span>
+                            </div>
+                            <div class="project-links-bar">
+                                <a href="https://github.com/FrodyGr/LoomDoctor" target="_blank" rel="noopener" class="link-btn primary">
+                                    <i class="fab fa-github"></i> Repositorio
+                                </a>
+                                <a href="https://github.com/FrodyGr/LoomDoctor/wiki" target="_blank" rel="noopener" class="link-btn">
+                                    <i class="fas fa-book-open"></i> Wiki
                                 </a>
                             </div>
                         </div>
