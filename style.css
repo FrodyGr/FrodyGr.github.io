@@ -788,6 +788,19 @@ img {
     background: #090d16;
 }
 
+.project-thumbnail.book-thumbnail {
+    background: #080c14;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-thumbnail.book-thumbnail img {
+    object-fit: contain;
+    padding: 12px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.65));
+}
+
 .project-card:hover .project-thumbnail img {
     transform: scale(1.05);
 }
