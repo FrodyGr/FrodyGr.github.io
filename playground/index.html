@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Open Source Labs — Interactive Playground | Carlos Expósito</title>
+  <meta name="description" content="Laboratorio y simulador interactivo en el navegador de las librerías Java Open Source de Carlos Expósito: AgentGuard, EvidenceChain, LoomDoctor y Fuse.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="lab-header">
+    <div class="lab-container header-row">
+      <a href="../index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Volver al Portfolio
+      </a>
+      <div class="header-brand">
+        <span class="badge-live"><span class="pulse-dot"></span> LIVE LABS</span>
+        <h1>Java Open Source Playground</h1>
+      </div>
+      <div class="header-author">
+        <span>Carlos Expósito &bull; Perito Nº 03624</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="lab-container">
+    <!-- Intro Banner -->
+    <div class="lab-intro">
+      <h2>Prueba las librerías en acción directamente en tu navegador</h2>
+      <p>Simulador interactivo en tiempo real que ejecuta en JavaScript los mismos algoritmos (Luhn, Merkle Trees, SHA-256 criptográfico, carrier pinning y circuitos CAS) de la suite de librerías Java empresariales.</p>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="lab-tabs">
+      <button class="lab-tab-btn active" data-target="tab-agentguard">
+        <i class="fas fa-user-shield"></i> AgentGuard <span class="tab-subtitle">AI Security &amp; PII</span>
+      </button>
+      <button class="lab-tab-btn" data-target="tab-evidencechain">
+        <i class="fas fa-link"></i> EvidenceChain <span class="tab-subtitle">Merkle &amp; Forense</span>
+      </button>
+      <button class="lab-tab-btn" data-target="tab-loomdoctor">
+        <i class="fas fa-stethoscope"></i> LoomDoctor <span class="tab-subtitle">Virtual Threads</span>
+      </button>
+      <button class="lab-tab-btn" data-target="tab-fuse">
+        <i class="fas fa-bolt"></i> Fuse <span class="tab-subtitle">Circuit Breaker</span>
+      </button>
+    </div>
+
+    <!-- ==================== TAB 1: AGENTGUARD ==================== -->
+    <section id="tab-agentguard" class="lab-pane active">
+      <div class="pane-header">
+        <div class="pane-title">
+          <i class="fas fa-user-shield text-blue"></i>
+          <div>
+            <h3>AgentGuard: AI Prompt Firewall &amp; Reversible PII Masking</h3>
+            <p>Anonimiza datos sensibles con validación Luhn y bloquea prompt injections antes de enviar el prompt a LLMs (Spring AI / LangChain4j).</p>
+          </div>
+        </div>
+        <a href="https://github.com/FrodyGr/AgentGuard" target="_blank" class="btn-repo"><i class="fab fa-github"></i> Repositorio</a>
+      </div>
+
+      <!-- Quick Presets -->
+      <div class="presets-bar">
+        <span>Cargar ejemplo:</span>
+        <button class="btn-preset" id="ag-preset-valid">Tarjeta Válida (Luhn) + Email + DNI</button>
+        <button class="btn-preset" id="ag-preset-invalid">Tarjeta Falsa (Falla Luhn)</button>
+        <button class="btn-preset" id="ag-preset-attack">Prompt Injection / Jailbreak</button>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Input Panel -->
+        <div class="card-panel">
+          <div class="panel-heading">
+            <span class="step-badge">1</span> Prompt Original (Entrada del Usuario)
+          </div>
+          <textarea id="ag-input" class="code-editor" rows="6" placeholder="Escribe un prompt con datos sensibles o ataques...">Por favor cobra 150 EUR a la tarjeta Visa 4532-0150-1234-5671 y envía recibo a cliente.vip@empresa.com para el DNI 12345678Z con teléfono +34 612 345 678.</textarea>
+          <div class="panel-actions">
+            <button id="ag-btn-process" class="btn-action primary">
+              <i class="fas fa-shield-alt"></i> Ejecutar AgentGuard.securePrompt()
+            </button>
+            <span id="ag-token-count" class="badge-metric">Tokens estimados: ~38</span>
+          </div>
+        </div>
+
+        <!-- Security Status Panel -->
+        <div class="card-panel">
+          <div class="panel-heading">
+            <span class="step-badge">2</span> Diagnóstico del Firewall
+          </div>
+          <div class="security-status-box" id="ag-security-box">
+            <div class="status-indicator safe" id="ag-status-badge">
+              <i class="fas fa-check-circle"></i> PROMPT SEGURO (SAFE)
+            </div>
+            <div class="risk-meter-wrap">
+              <span class="risk-label">Riesgo de Injection:</span>
+              <div class="risk-bar"><div class="risk-bar-fill green" id="ag-risk-fill" style="width: 5%"></div></div>
+              <span id="ag-risk-text" class="risk-val">NONE (0/100)</span>
+            </div>
+            <div id="ag-detected-threats" class="threats-list empty">
+              <span>Ninguna amenaza de inyección detectada.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2col mt-4">
+        <!-- Masked Output -->
+        <div class="card-panel">
+          <div class="panel-heading">
+            <span class="step-badge">3</span> Prompt Sanitizado (Enviado al LLM)
+          </div>
+          <div class="result-code-box" id="ag-masked-output">
+            Por favor cobra 150 EUR a la tarjeta Visa <span class="tag-token">[CREDIT_CARD_1]</span> y envía recibo a <span class="tag-token">[EMAIL_1]</span> para el DNI <span class="tag-token">[TAX_ID_1]</span> con teléfono <span class="tag-token">[PHONE_1]</span>.
+          </div>
+          <div class="token-mappings-wrap">
+            <span class="text-muted-xs">Tabla de Tokens Reversibles (PiiContext):</span>
+            <div id="ag-mappings-table" class="mappings-pills">
+              <span class="map-pill"><code>[CREDIT_CARD_1]</code> ➔ 4532-0150-1234-5671 (Luhn OK)</span>
+              <span class="map-pill"><code>[EMAIL_1]</code> ➔ cliente.vip@empresa.com</span>
+              <span class="map-pill"><code>[TAX_ID_1]</code> ➔ 12345678Z</span>
+              <span class="map-pill"><code>[PHONE_1]</code> ➔ +34 612 345 678</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LLM Echo & Restoration -->
+        <div class="card-panel">
+          <div class="panel-heading">
+            <span class="step-badge">4</span> Desanonimización de la Respuesta del LLM
+          </div>
+          <label class="label-xs">Respuesta simulada del LLM (contiene tokens):</label>
+          <input type="text" id="ag-llm-mock" class="input-text-sm" value="Pago procesado con [CREDIT_CARD_1]. Justificante remitido a [EMAIL_1].">
+          <button id="ag-btn-unmask" class="btn-action secondary mt-2">
+            <i class="fas fa-undo"></i> AgentGuard.restoreResponse()
+          </button>
+          <label class="label-xs mt-3">Resultado restaurado entregado al usuario final:</label>
+          <div class="result-code-box green" id="ag-restored-output">
+            Pago procesado con 4532-0150-1234-5671. Justificante remitido a cliente.vip@empresa.com.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: EVIDENCECHAIN ==================== -->
+    <section id="tab-evidencechain" class="lab-pane">
+      <div class="pane-header">
+        <div class="pane-title">
+          <i class="fas fa-link text-emerald"></i>
+          <div>
+            <h3>EvidenceChain: Cryptographic Audit Trail &amp; Merkle Forensics</h3>
+            <p>Libro mayor inmutable con árboles de Merkle y SHA-256. Diseñado bajo metodología pericial judicial (Colegiado Nº 03624) para garantizar la no manipulación de evidencias.</p>
+          </div>
+        </div>
+        <a href="https://github.com/FrodyGr/EvidenceChain" target="_blank" class="btn-repo"><i class="fab fa-github"></i> Repositorio</a>
+      </div>
+
+      <!-- Ledger Events Input -->
+      <div class="card-panel">
+        <div class="panel-heading-between">
+          <div><span class="step-badge">1</span> Cadena de Evidencias Digitales Registradas</div>
+          <div class="actions-right">
+            <button id="ec-btn-add" class="btn-sm"><i class="fas fa-plus"></i> Añadir Evidencia</button>
+            <button id="ec-btn-tamper" class="btn-sm danger"><i class="fas fa-skull-crossbones"></i> Simular Alteración Fraudulenta</button>
+            <button id="ec-btn-reset" class="btn-sm secondary"><i class="fas fa-redo"></i> Restaurar</button>
+            <button id="ec-btn-export" class="btn-sm primary"><i class="fas fa-file-signature"></i> Exportar Dictamen Pericial</button>
+          </div>
+        </div>
+
+        <div class="events-list" id="ec-events-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Merkle Tree Visualizer -->
+      <div class="card-panel mt-4">
+        <div class="panel-heading-between">
+          <div><span class="step-badge">2</span> Árbol Criptográfico de Merkle (SHA-256)</div>
+          <div id="ec-integrity-badge" class="badge-integrity valid">
+            <i class="fas fa-shield-check"></i> CADENA ÍNTEGRA Y VÁLIDA
+          </div>
+        </div>
+
+        <div class="merkle-root-bar">
+          <span class="root-label">MERKLE ROOT HASH:</span>
+          <code id="ec-root-hash" class="root-hash-code">Calculando hash criptográfico SHA-256...</code>
+        </div>
+
+        <div class="merkle-visual-tree" id="ec-merkle-tree">
+          <!-- Interactive Tree Rendered Here -->
+        </div>
+      </div>
+
+      <!-- Forensic Certificate Modal / Output -->
+      <div id="ec-certificate-modal" class="modal-backdrop hidden">
+        <div class="modal-card">
+          <div class="modal-header">
+            <h4><i class="fas fa-stamp text-emerald"></i> Dictamen Pericial Judicial de Integridad</h4>
+            <button class="btn-close-modal" id="ec-close-modal">&times;</button>
+          </div>
+          <div class="modal-body" id="ec-certificate-content">
+            <!-- Populated dynamically -->
+          </div>
+          <div class="modal-footer">
+            <button class="btn-action primary" id="ec-btn-copy-cert"><i class="fas fa-copy"></i> Copiar Dictamen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: LOOMDOCTOR ==================== -->
+    <section id="tab-loomdoctor" class="lab-pane">
+      <div class="pane-header">
+        <div class="pane-title">
+          <i class="fas fa-stethoscope text-purple"></i>
+          <div>
+            <h3>LoomDoctor: Virtual Thread Pinning &amp; Pool Starvation Telemetry</h3>
+            <p>Diagnóstico en vivo del comportamiento de hilos virtuales (Java 21+) sobre carrier threads y saturación de JDBC pools.</p>
+          </div>
+        </div>
+        <a href="https://github.com/FrodyGr/LoomDoctor" target="_blank" class="btn-repo"><i class="fab fa-github"></i> Repositorio</a>
+      </div>
+
+      <div class="grid-3col">
+        <!-- Simulation Controls -->
+        <div class="card-panel">
+          <div class="panel-heading">
+            <span class="step-badge">1</span> Parámetros de Carga
+          </div>
+          
+          <div class="control-group">
+            <label>Hilos Virtuales Concurrentes: <span id="ld-val-vthreads" class="text-highlight">1,000</span></label>
+            <input type="range" id="ld-slider-vthreads" min="100" max="10000" step="100" value="1000" class="slider">
+          </div>
+
+          <div class="control-group">
+            <label>Carrier Threads OS (CPUs): <span id="ld-val-carriers" class="text-highlight">8</span></label>
+            <input type="range" id="ld-slider-carriers" min="2" max="32" step="2" value="8" class="slider">
+          </div>
+
+          <div class="control-group">
+            <label>Capacidad Pool JDBC (HikariCP): <span id="ld-val-pool" class="text-highlight">10</span> conexiones</label>
+            <input type="range" id="ld-slider-pool" min="5" max="100" step="5" value="10" class="slider">
+          </div>
+
+          <div class="control-group">
+            <label>Mecanismo de Bloqueo:</label>
+            <div class="radio-toggle">
+              <label class="radio-label">
+                <input type="radio" name="lockType" value="synchronized" checked>
+                <span class="danger-pill"><code>synchronized</code> (Pinning!)</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="lockType" value="reentrantlock">
+                <span class="safe-pill"><code>ReentrantLock</code> (Clean Yield)</span>
+              </label>
+            </div>
+          </div>
+
+          <button id="ld-btn-diagnose" class="btn-action primary w-100 mt-2">
+            <i class="fas fa-stethoscope"></i> LoomDoctor.diagnose()
+          </button>
+        </div>
+
+        <!-- Diagnostics Telemetry -->
+        <div class="card-panel col-span-2">
+          <div class="panel-heading-between">
+            <div><span class="step-badge">2</span> Telemetría de Runtime (/actuator/loom-doctor)</div>
+            <span id="ld-health-badge" class="badge-integrity degraded">STATUS: DEGRADED</span>
+          </div>
+
+          <!-- Gauges Grid -->
+          <div class="gauges-grid">
+            <div class="gauge-card">
+              <span class="gauge-title">Carrier Thread Saturation</span>
+              <div class="gauge-meter"><div id="ld-carrier-fill" class="gauge-meter-fill red" style="width: 100%"></div></div>
+              <span id="ld-carrier-text" class="gauge-number text-red">8 / 8 Pinned (100%)</span>
+            </div>
+
+            <div class="gauge-card">
+              <span class="gauge-title">Connection Pool Wait Ratio</span>
+              <div class="gauge-meter"><div id="ld-starvation-fill" class="gauge-meter-fill yellow" style="width: 90%"></div></div>
+              <span id="ld-starvation-text" class="gauge-number text-yellow">Ratio 99.0x (990 en cola)</span>
+            </div>
+          </div>
+
+          <!-- Recommendations Box -->
+          <div class="recommendations-box mt-3">
+            <div class="rec-header"><i class="fas fa-lightbulb text-amber"></i> Recomendaciones de Reingeniería Generadas:</div>
+            <ul id="ld-recommendations-list" class="rec-list">
+              <li>Carrier Thread Pinning Detectado: 8 hilos portadores bloqueados dentro de monitores <code>synchronized</code>. Sustituye por <code>java.util.concurrent.locks.ReentrantLock</code>.</li>
+              <li>Downstream Starvation: 990 hilos virtuales esperando por 10 conexiones JDBC. Implementa backpressure con <code>Semaphore</code> o amplía el pool.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: FUSE ==================== -->
+    <section id="tab-fuse" class="lab-pane">
+      <div class="pane-header">
+        <div class="pane-title">
+          <i class="fas fa-bolt text-amber"></i>
+          <div>
+            <h3>Fuse: Ultra-lightweight Lock-Free Circuit Breaker</h3>
+            <p>Circuit breaker en menos de 20 KB sin dependencias externas, con operaciones atómicas CAS (<code>AtomicReference</code>) para microservicios de ultra baja latencia.</p>
+          </div>
+        </div>
+        <a href="https://github.com/FrodyGr/Fuse" target="_blank" class="btn-repo"><i class="fab fa-github"></i> Repositorio</a>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card-panel">
+          <div class="panel-heading"><span class="step-badge">1</span> Simulador de Tráfico de Microservicios</div>
+          
+          <div class="control-group">
+            <label>Umbral de Fallos para Apertura: <span id="fuse-val-threshold">50%</span></label>
+            <input type="range" id="fuse-slider-threshold" min="10" max="90" step="5" value="50" class="slider">
+          </div>
+
+          <div class="traffic-buttons-row">
+            <button id="fuse-btn-success" class="btn-traffic success"><i class="fas fa-check"></i> Enviar Petición OK (200)</button>
+            <button id="fuse-btn-fail" class="btn-traffic fail"><i class="fas fa-times"></i> Enviar Petición Error (500)</button>
+            <button id="fuse-btn-batch-fail" class="btn-traffic danger"><i class="fas fa-bomb"></i> Ráfaga de 10 Errores</button>
+            <button id="fuse-btn-reset" class="btn-traffic secondary"><i class="fas fa-undo"></i> Reset Circuit</button>
+          </div>
+
+          <div class="metrics-row mt-3">
+            <div class="mini-stat">
+              <span class="mini-title">Total Peticiones</span>
+              <span class="mini-val" id="fuse-stat-total">0</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-title">Peticiones Exitosas</span>
+              <span class="mini-val text-green" id="fuse-stat-success">0</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-title">Peticiones Fallidas</span>
+              <span class="mini-val text-red" id="fuse-stat-failed">0</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-title">Tasa de Error Actual</span>
+              <span class="mini-val" id="fuse-stat-rate">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-panel">
+          <div class="panel-heading"><span class="step-badge">2</span> Estado CAS Atómico del Circuito</div>
+          
+          <div class="circuit-state-display closed" id="fuse-state-card">
+            <div class="state-icon-wrap" id="fuse-state-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="state-info">
+              <span class="state-subtitle">Estado del Fuse Circuit:</span>
+              <h2 id="fuse-state-text">CLOSED</h2>
+              <p id="fuse-state-desc">El tráfico fluye con normalidad. Los microservicios downstream responden adecuadamente.</p>
+            </div>
+          </div>
+
+          <div class="circuit-log-box mt-3">
+            <div class="log-title"><i class="fas fa-terminal"></i> Log de Transiciones CAS:</div>
+            <div id="fuse-event-log" class="log-entries">
+              <div class="log-entry">[0.000s] Circuit initialized in state CLOSED (CAS lock-free)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
