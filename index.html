@@ -69,8 +69,53 @@
 
             <nav class="nav-links" aria-label="Navegación principal">
                 <a href="#services" class="nav-link">Servicios</a>
-                <a href="#projects" class="nav-link">Proyectos</a>
-                <a href="playground/index.html" class="nav-link"><i class="fas fa-flask"></i> Labs Live</a>
+
+                <!-- Dropdown Proyectos -->
+                <div class="nav-dropdown">
+                    <a href="#projects" class="nav-link nav-dropdown-trigger">
+                        <span>Proyectos</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="#books" class="dropdown-item">
+                            <div class="dropdown-item-icon books"><i class="fas fa-book"></i></div>
+                            <div class="dropdown-item-info">
+                                <span class="dropdown-item-title">Libros Publicados</span>
+                                <span class="dropdown-item-desc">Trilogía Java en Amazon</span>
+                            </div>
+                        </a>
+                        <a href="#clients" class="dropdown-item">
+                            <div class="dropdown-item-icon clients"><i class="fas fa-globe"></i></div>
+                            <div class="dropdown-item-info">
+                                <span class="dropdown-item-title">Webs & Clientes</span>
+                                <span class="dropdown-item-desc">Despachos, logística e industria</span>
+                            </div>
+                        </a>
+                        <a href="#opensource" class="dropdown-item">
+                            <div class="dropdown-item-icon opensource"><i class="fas fa-code-branch"></i></div>
+                            <div class="dropdown-item-info">
+                                <span class="dropdown-item-title">Open Source Java</span>
+                                <span class="dropdown-item-desc">Librerías de alta concurrencia</span>
+                            </div>
+                        </a>
+                        <a href="#apps" class="dropdown-item">
+                            <div class="dropdown-item-icon apps"><i class="fas fa-brain"></i></div>
+                            <div class="dropdown-item-info">
+                                <span class="dropdown-item-title">IA & Aplicaciones</span>
+                                <span class="dropdown-item-desc">Demos interactivas y 3D</span>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="playground/index.html" class="dropdown-item">
+                            <div class="dropdown-item-icon labs"><i class="fas fa-flask"></i></div>
+                            <div class="dropdown-item-info">
+                                <span class="dropdown-item-title">Labs Live (Playground)</span>
+                                <span class="dropdown-item-desc">Simulador interactivo en vivo</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
                 <a href="#experience" class="nav-link">Trayectoria</a>
                 <a href="#about" class="nav-link">Sobre Mí</a>
                 <a href="#contact" class="nav-link">Contacto</a>
@@ -90,8 +135,11 @@
     <!-- Menú Móvil Desplegable -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#services" class="mobile-nav-link">Servicios</a>
-        <a href="#projects" class="mobile-nav-link">Proyectos</a>
-        <a href="playground/index.html" class="mobile-nav-link"><i class="fas fa-flask"></i> Labs Live</a>
+        <a href="#books" class="mobile-nav-link"><i class="fas fa-book"></i> Libros en Amazon</a>
+        <a href="#clients" class="mobile-nav-link"><i class="fas fa-globe"></i> Webs & Clientes</a>
+        <a href="#opensource" class="mobile-nav-link"><i class="fas fa-code-branch"></i> Open Source Java</a>
+        <a href="#apps" class="mobile-nav-link"><i class="fas fa-brain"></i> IA & Aplicaciones</a>
+        <a href="playground/index.html" class="mobile-nav-link"><i class="fas fa-flask"></i> Labs Live (Simulador)</a>
         <a href="#experience" class="mobile-nav-link">Trayectoria</a>
         <a href="#about" class="mobile-nav-link">Sobre Mí</a>
         <a href="#contact" class="mobile-nav-link">Contacto</a>
@@ -274,9 +322,9 @@
                     <div class="section-pill">
                         <i class="fas fa-star"></i> Portafolio
                     </div>
-                    <h2 class="section-title">Casos de Éxito y Proyectos</h2>
+                    <h2 class="section-title">Proyectos, Libros & Software</h2>
                     <p class="section-description">
-                        Filtra por categoría para ver las webs en producción para clientes, las librerías open source que he publicado o los laboratorios de IA y demos interactivas.
+                        Explora mis libros técnicos publicados en Amazon, plataformas web para empresas y clientes, librerías Java open source de alta concurrencia y proyectos de inteligencia artificial.
                     </p>
                     <div style="margin-top: 1.25rem; display: flex; justify-content: center;">
                         <a href="playground/index.html" class="btn-primary" style="font-size: 0.88rem; padding: 0.55rem 1.35rem; background: linear-gradient(135deg, #2563eb, #7c3aed); box-shadow: 0 0 20px rgba(124, 58, 237, 0.35);">
@@ -285,29 +333,19 @@
                     </div>
                 </div>
 
-                <!-- Pestañas de Filtrado Dinámico -->
-                <div class="projects-tabs">
-                    <button class="tab-btn active" data-filter="all">
-                        <i class="fas fa-border-all"></i> Todos (<span id="countAll">21</span>)
-                    </button>
-                    <button class="tab-btn" data-filter="books">
-                        <i class="fas fa-book"></i> Libros (3)
-                    </button>
-                    <button class="tab-btn" data-filter="clients">
-                        <i class="fas fa-globe"></i> Webs & Clientes (3)
-                    </button>
-                    <button class="tab-btn" data-filter="opensource">
-                        <i class="fas fa-code-branch"></i> Open Source & Java (7)
-                    </button>
-                    <button class="tab-btn" data-filter="apps">
-                        <i class="fas fa-brain"></i> IA & Aplicaciones (8)
-                    </button>
-                </div>
+                <!-- ==================== 1. LIBROS PUBLICADOS (AMAZON) ==================== -->
+                <div class="project-category-block" id="books">
+                    <div class="category-header">
+                        <div class="category-header-title">
+                            <div class="category-icon books"><i class="fas fa-book"></i></div>
+                            <div>
+                                <h3>Libros Publicados en Amazon</h3>
+                            </div>
+                        </div>
+                        <span class="category-count">3 Libros</span>
+                    </div>
 
-                <!-- Cuadrícula de Proyectos -->
-                <div class="projects-grid" id="projectsGrid">
-
-                    <!-- ==================== LIBROS PUBLICADOS (AMAZON) ==================== -->
+                    <div class="projects-grid">
 
                     <!-- Java POP: Programación Orientada a Principiantes -->
                     <div class="project-card" data-category="books">
@@ -377,8 +415,22 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- ==================== WEBS DE CLIENTES ==================== -->
+            <!-- ==================== 2. WEBS DE CLIENTES ==================== -->
+            <div class="project-category-block" id="clients">
+                <div class="category-header">
+                    <div class="category-header-title">
+                        <div class="category-icon clients"><i class="fas fa-globe"></i></div>
+                        <div>
+                            <h3>Webs Corporativas & Clientes</h3>
+                        </div>
+                    </div>
+                    <span class="category-count">3 Proyectos</span>
+                </div>
+
+                <div class="projects-grid">
 
                     <!-- CE Análisis Digital -->
                     <div class="project-card" data-category="clients">
@@ -448,8 +500,22 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- ==================== OPEN SOURCE & JAVA ==================== -->
+            <!-- ==================== 3. OPEN SOURCE & JAVA ==================== -->
+            <div class="project-category-block" id="opensource">
+                <div class="category-header">
+                    <div class="category-header-title">
+                        <div class="category-icon opensource"><i class="fas fa-code-branch"></i></div>
+                        <div>
+                            <h3>Librerías Open Source & Java</h3>
+                        </div>
+                    </div>
+                    <span class="category-count">7 Librerías</span>
+                </div>
+
+                <div class="projects-grid">
 
                     <!-- ScopeFlow -->
                     <div class="project-card" data-category="opensource">
@@ -653,8 +719,22 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- ==================== IA & APLICACIONES ==================== -->
+            <!-- ==================== 4. IA & APLICACIONES ==================== -->
+            <div class="project-category-block" id="apps">
+                <div class="category-header">
+                    <div class="category-header-title">
+                        <div class="category-icon apps"><i class="fas fa-brain"></i></div>
+                        <div>
+                            <h3>IA, Simuladores & Aplicaciones</h3>
+                        </div>
+                    </div>
+                    <span class="category-count">8 Demos & Apps</span>
+                </div>
+
+                <div class="projects-grid">
 
                     <!-- Java Agents Labs -->
                     <div class="project-card" data-category="apps">
@@ -842,7 +922,8 @@
 
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <!-- ========== TRAYECTORIA PROFESIONAL ========== -->
         <section class="section" id="experience">
@@ -1135,27 +1216,7 @@
             });
         }
 
-        // 2. Filtrado dinámico de Proyectos por Pestañas (Tabs)
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const projectCards = document.querySelectorAll('.project-card');
 
-        tabButtons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-
-                const filterValue = this.getAttribute('data-filter');
-
-                projectCards.forEach(function (card) {
-                    const category = card.getAttribute('data-category');
-                    if (filterValue === 'all' || category === filterValue) {
-                        card.classList.remove('hide');
-                    } else {
-                        card.classList.add('hide');
-                    }
-                });
-            });
-        });
 
         // 3. Copiado de Email al Portapapeles con Toast Feedback
         const copyBtn = document.getElementById('emailCopyBtn');
